@@ -41,10 +41,9 @@ public class BETournament implements Serializable{
         this.format = format;
         this.edition = edition;
         this.rel = rel;
-        this.location = format;
+        this.price = price;
         this.entryTime = entryTime;
         this.startTime = startTime;
-        this.price = price;
         this.info = info;
         this.players = players;
     }
