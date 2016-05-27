@@ -30,7 +30,7 @@ public class DAO {
     private SQLiteDatabase db;
     private SQLiteStatement insertStmt;
     private static final String INSERT = "insert into " + TABLE_NAME
-            + " (id, title, date, location, edition, rel, format, entryTime, startTime, price, info, players) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            + " (id, title, location, date, format, edition, rel, price, entryTime, startTime, info, players) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
     public DAO(Context context) {
@@ -47,14 +47,14 @@ public class DAO {
 
                 this.insertStmt.bindString(1, t.getId());
                 this.insertStmt.bindString(2, t.getTitle());
-                this.insertStmt.bindString(3, t.getDate());
-                this.insertStmt.bindString(4, t.getLocation());
-                this.insertStmt.bindString(5, t.getEdition());
-                this.insertStmt.bindString(6, t.getRel());
-                this.insertStmt.bindString(7, t.getFormat());
-                this.insertStmt.bindString(8, t.getEntryTime());
-                this.insertStmt.bindString(9, t.getStartTime());
-                this.insertStmt.bindString(10, t.getPrice());
+                this.insertStmt.bindString(3, t.getLocation());
+                this.insertStmt.bindString(4, t.getDate());
+                this.insertStmt.bindString(5, t.getFormat());
+                this.insertStmt.bindString(6, t.getEdition());
+                this.insertStmt.bindString(7, t.getRel());
+                this.insertStmt.bindString(8, t.getPrice());
+                this.insertStmt.bindString(9, t.getEntryTime());
+                this.insertStmt.bindString(10, t.getStartTime());
                 this.insertStmt.bindString(11, t.getInfo());
 
                 try {
@@ -91,7 +91,7 @@ public class DAO {
     */
     public List<BETournament> selectAll()  {
         List<BETournament> list = new ArrayList<BETournament>();
-        Cursor cursor = this.db.query(TABLE_NAME, new String[] { "id", "title", "date", "location", "edition", "rel", "format", "entryTime", "startTime", "price", "info", "players"},
+        Cursor cursor = this.db.query(TABLE_NAME, new String[] { "id", "title", "location", "date", "format", "edition", "rel", "price", "entryTime", "startTime", "info", "players"},
                 null, null, null, null, "title asc");
         if (cursor.moveToFirst()) {
             do {
@@ -160,7 +160,7 @@ public class DAO {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_NAME
-                    + "( id TEXT,title TEXT,date TEXT, location TEXT, edition TEXT, rel TEXT, format TEXT, entryTime TEXT, startTime TEXT, price TEXT, info TEXT, players TEXT)");
+                    + "( id TEXT,title TEXT,location TEXT, date TEXT, format TEXT, edition TEXT, rel TEXT, price TEXT, entryTime TEXT, startTime TEXT, info TEXT, players TEXT)");
         }
 
         @Override
